@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Pizzaria del Sole</title>
         <script
-            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-            async
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb"
             defer
         ></script>
         <style>
@@ -113,6 +112,7 @@
                         data-sitekey="0x4AAAAAAAVO0lrup4F8ikQ3"
                     ></div>
                 </div>
+                <div id="myWidget"></div>
                 <button type="button" id="submitButton" class="btn">
                     Register Now
                 </button>
@@ -120,6 +120,15 @@
         </div>
 
         <script>
+            function _turnstileCb() {
+                console.debug("_turnstileCb called");
+
+                turnstile.render("#myWidget", {
+                    sitekey: "0x4AAAAAAAVO0lrup4F8ikQ3",
+                    theme: "light",
+                });
+            }
+
             document
                 .getElementById("submitButton")
                 .addEventListener("click", function (e) {
