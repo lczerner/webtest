@@ -1,93 +1,169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzaria del Sole</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff4e6;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 20px 0;
-        }
-        .logo {
-            max-width: 200px;
-            margin: auto;
-        }
-        h1 {
-            color: #d35400;
-        }
-        p {
-            line-height: 1.6;
-        }
-        form {
-            background-color: #f9ebea;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input[type=text], .form-group input[type=email], .form-group input[type=tel] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #d35400;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <img src="logo.webp" alt="Pizzaria del Sole Logo" class="logo">
-            <h1>Welcome to Pizzaria del Sole</h1>
-        </header>
-        <p>We're thrilled to open our doors and start delivering the finest pizzas right to your doorstep - for free! Our passion for authentic, flavorful pizza drives us to bring you nothing but the best. Get ready to experience the taste of joy.</p>
-        <h2>Register for Free Delivery</h2>
-        <form action="your-server-endpoint" method="post">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="surname">Surname:</label>
-                <input type="text" id="surname" name="surname" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="telephone">Telephone:</label>
-                <input type="tel" id="telephone" name="telephone" required>
-            </div>
-            <button type="submit" class="btn">Register Now</button>
-        </form>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pizzaria del Sole</title>
+        <script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async
+            defer
+        ></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #fff4e6;
+                color: #333;
+            }
+            .container {
+                max-width: 800px;
+                margin: auto;
+                padding: 20px;
+            }
+            header {
+                text-align: center;
+                padding: 20px 0;
+            }
+            .logo {
+                max-width: 200px;
+                margin: auto;
+            }
+            h1 {
+                color: #d35400;
+            }
+            p {
+                line-height: 1.6;
+            }
+            form {
+                background-color: #f9ebea;
+                padding: 20px;
+                border-radius: 8px;
+            }
+            .form-group {
+                margin-bottom: 20px;
+            }
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            .btn {
+                display: inline-block;
+                background-color: #d35400;
+                color: #fff;
+                padding: 10px 20px;
+                text-align: center;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <img
+                    src="logo.webp"
+                    alt="Pizzaria del Sole Logo"
+                    class="logo"
+                />
+                <h1>Welcome to Pizzaria del Sole</h1>
+            </header>
+            <p>
+                We're thrilled to open our doors and start delivering the finest
+                pizzas right to your doorstep - for free! Our passion for
+                authentic, flavorful pizza drives us to bring you nothing but
+                the best. Get ready to experience the taste of joy.
+            </p>
+            <h2>Register for Free Delivery</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Telephone:</label>
+                    <input
+                        type="tel"
+                        id="telephone"
+                        name="telephone"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <div
+                        class="turnstile"
+                        data-sitekey="0x4AAAAAAAVO0lrup4F8ikQ3"
+                    ></div>
+                </div>
+                <button type="button" id="submitButton" class="btn">
+                    Register Now
+                </button>
+            </form>
+        </div>
+
+        <script>
+            document
+                .getElementById("submitButton")
+                .addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const formData = {
+                        name: document.getElementById("name").value,
+                        surname: document.getElementById("surname").value,
+                        email: document.getElementById("email").value,
+                        telephone: document.getElementById("telephone").value,
+                        "cf-turnstile-response": document.getElementsByName(
+                            "cf-turnstile-response",
+                        )[0].value,
+                    };
+
+                    // Basic validation (for demonstration purposes, expand as needed)
+                    if (
+                        !formData.name ||
+                        !formData.surname ||
+                        !formData.email ||
+                        !formData.telephone
+                    ) {
+                        alert("Please fill in all fields.");
+                        return;
+                    }
+
+                    fetch("https://data.example.com", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log("Success:", data);
+                            // Handle success (e.g., showing a thank you message)
+                            alert("Registration successful!");
+                        })
+                        .catch((error) => {
+                            console.error("Error:", error);
+                            // Handle error (e.g., showing an error message)
+                            alert("An error occurred. Please try again.");
+                        });
+                });
+        </script>
+    </body>
 </html>
